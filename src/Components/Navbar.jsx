@@ -11,7 +11,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="w-full flex justify-between items-center py-6 mb-3 sm:mb-5 lg:mb-10 px-4">
+    <nav className="w-full flex justify-between items-center py-6 mb-3 sm:mb-5 lg:mb-10 md:px-4">
       <Link to="/">
         <h2 className="font-semibold text-[26px]">Ebram Raoof</h2>
       </Link>
@@ -67,7 +67,7 @@ const Navbar = () => {
               : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
         >
-          <ul className="text-lg font-bold space-y-6">
+          <ul className="text-lg font-bold space-y-6 h-[250px] my-auto">
             <li>
               <Link to="/" onClick={() => setIsOpen(false)}>
                 WORK
