@@ -2,7 +2,7 @@ import { assets } from "../assets/assets";
 
 const Banner = () => {
   return (
-    <section className="flex flex-col-reverse lg:flex-row justify-between items-center mt-10 gap-10 px-4">
+    <section className="flex flex-col-reverse lg:flex-row justify-between items-center my-10 gap-10 px-4">
       <div className="flex flex-col items-center md:items-start text-center md:text-left">
         {/* Text */}
         <h1 className="text-2xl md:text-4xl font-bold tracking-wide leading-snug">

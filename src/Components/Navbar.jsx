@@ -11,7 +11,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="w-full flex justify-between items-center py-6 mb-3 sm:mb-5 lg:mb-10 md:px-4">
+    <nav className="w-full flex justify-between items-center pt-4 pb-6 mb-3 sm:mb-5 lg:mb-10 px-2">
       <Link to="/">
         <h2 className="font-semibold text-[26px]">Ebram Raoof</h2>
       </Link>
