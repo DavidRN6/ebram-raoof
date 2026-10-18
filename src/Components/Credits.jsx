@@ -24,7 +24,7 @@ const Credits = () => {
             <li
               key={i}
               aria-hidden={i >= LOGOS.length}
-              className="flex h-[100px] w-[260px] shrink-0 items-center justify-center px-6 sm:w-[390px]"
+              className="flex h-[100px] w-[210px] shrink-0 items-center justify-center px-6 sm:w-[390px]"
             >
               <img
                 src={logo.src}

@@ -54,7 +54,7 @@ const Footer = () => {
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="flex h-[75px] w-[52px] shrink-0 text-3xl items-start justify-center rounded-full border-[6px] border-[#fa2119] pt-1 text-[#fa2119] transition-transform hover:-translate-y-1 hover:-rotate-[10deg] motion-reduce:transition-none"
+            className="hidden lg:flex h-[75px] w-[52px] shrink-0 text-3xl items-start justify-center rounded-full border-[6px] border-[#fa2119] pt-1 text-[#fa2119] transition-transform hover:-translate-y-1 hover:-rotate-[10deg] motion-reduce:transition-none"
           >
             <FaChevronUp />
           </button>

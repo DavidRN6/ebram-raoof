@@ -25,7 +25,7 @@ const Logo = () => (
     <img
       src={assets.logo}
       alt="Ahmed Adel"
-      className="h-6 w-auto object-contain lg:h-7"
+      className="h-5 w-auto object-contain lg:h-7"
     />
   </a>
 );
@@ -171,14 +171,14 @@ const Navbar = () => {
               }`}
             />
             <span
-              className={`absolute left-1/2 top-1/2 h-px w-7 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white transition-transform duration-300 motion-reduce:transition-none ${
+              className={`absolute left-1/2 top-1/2 h-[2px] w-7 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white transition-transform duration-300 motion-reduce:transition-none ${
                 menuOpen ? "scale-x-100 delay-[600ms]" : "scale-x-0"
               }`}
             />
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col justify-center overflow-y-auto px-8 font-['Montserrat'] text-[40px] leading-[1.35]">
+        <nav className="flex flex-1 flex-col justify-center overflow-y-auto px-8 font-['Montserrat'] text-4xl sm:text-[40px] gap-y-3 leading-[1.35]">
           <div {...item(0)}>
             <button
               className="flex items-center gap-4 text-left"
