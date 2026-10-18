@@ -1,87 +1,246 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import {
+  FaBehance,
+  FaChevronDown,
+  FaChevronRight,
+  FaInstagram,
+  FaLinkedinIn,
+  FaVimeoV,
+  FaYoutube,
+} from "react-icons/fa";
+import { assets } from "../assets/assets";
+
+const SOCIALS = [
+  { label: "Vimeo", href: "#", Icon: FaVimeoV },
+  { label: "YouTube", href: "#", Icon: FaYoutube },
+  { label: "Instagram", href: "#", Icon: FaInstagram },
+  { label: "Behance", href: "#", Icon: FaBehance },
+  { label: "LinkedIn", href: "#", Icon: FaLinkedinIn },
+];
+
+const PROJECTS = ["Animation", "Character Design", "Direction"];
+
+const Logo = () => (
+  <a href="/" className="shrink-0">
+    <img
+      src={assets.logo}
+      alt="Ahmed Adel"
+      className="h-6 w-auto object-contain lg:h-7"
+    />
+  </a>
+);
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false); // desktop dropdown
+  const [menuOpen, setMenuOpen] = useState(false); // mobile menu
+  const [mobileProjects, setMobileProjects] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
-  }, [isOpen]);
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = (e) => e.matches && setMenuOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  const item = (i) => ({
+    className: `transition-all duration-500 ease-out motion-reduce:transition-none ${
+      menuOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+    }`,
+    style: { transitionDelay: menuOpen ? `${350 + i * 90}ms` : "0ms" },
+  });
 
   return (
-    <nav className="w-full flex justify-between items-center pt-4 pb-6 mb-3 sm:mb-5 lg:mb-10 px-2">
-      <Link to="/">
-        <h2 className="font-semibold text-[26px]">Ebram Raoof</h2>
-      </Link>
+    <header className="relative z-20 flex h-[90px] items-center justify-between bg-white px-8 lg:px-[78px]">
+      <div className="flex items-center gap-8 lg:gap-12">
+        <Logo />
 
-      {/* Desktop Menu */}
-      <ul className="hidden sm:flex font-semibold text-lg justify-center items-center gap-4">
-        <NavLink
-          to="/"
-          className="hover:text-purple-700 transition flex flex-col items-center"
-        >
-          <p>WORK</p>
-          <hr className="w-3/4 border-none h-[2px] bg-purple-900 hidden" />
-        </NavLink>
-        <li>/</li>
-        <NavLink
-          to="/about"
-          className="hover:text-purple-700 transition flex flex-col items-center"
-        >
-          <p>ABOUT</p>
-          <hr className="w-3/4 border-none h-[2px] bg-purple-900 hidden" />
-        </NavLink>
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-6 font-['Montserrat'] text-[15px] md:flex">
+          <div
+            className="relative"
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+          >
+            <button
+              className="flex items-center gap-1 py-8"
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+            >
+              PORTFOLIO
+              <FaChevronDown
+                size={15}
+                className={`transition-transform ${open ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            {open && (
+              <ul className="absolute left-0 top-[78px] min-w-[200px] bg-white py-2 shadow-lg">
+                {PROJECTS.map((p) => (
+                  <li key={p}>
+                    <a
+                      href="#"
+                      className="block px-5 py-2 hover:bg-neutral-100"
+                    >
+                      {p}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <a href="#about" className="hover:opacity-60">
+            About
+          </a>
+          <a href="#contact" className="hover:opacity-60">
+            Contact
+          </a>
+        </nav>
+      </div>
+
+      {/* Desktop socials */}
+      <ul className="hidden items-center gap-3 md:gap-5 text-[18px] text-black md:flex">
+        {SOCIALS.map(({ label, href, Icon }) => (
+          <li key={label}>
+            <a href={href} aria-label={label} className="hover:opacity-60">
+              <Icon />
+            </a>
+          </li>
+        ))}
       </ul>
 
-      {/* Mobile Menu */}
-      <div className="sm:hidden flex items-center">
-        {/* Burger Icon */}
-        <button
-          className="relative w-8 h-6 focus:outline-none"
-          onClick={toggleMenu}
-        >
-          <span
-            className={`block absolute left-0 w-full h-1 bg-purple-900 transition-all duration-500 rounded-sm ${
-              isOpen ? "rotate-45 top-1/2 -translate-y-1/2" : "top-0"
-            }`}
-          ></span>
-          <span
-            className={`block absolute left-0 w-full h-1 bg-purple-900 transition-all duration-500 rounded-sm ${
-              isOpen ? "opacity-0 w-0" : "top-1/2 -translate-y-1/2"
-            }`}
-          ></span>
-          <span
-            className={`block absolute left-0 w-full h-1 bg-purple-900 transition-all duration-500 rounded-sm ${
-              isOpen ? "-rotate-45 top-1/2 -translate-y-1/2" : "bottom-0"
-            }`}
-          ></span>
-        </button>
-
-        {/* Dropdown Menu */}
-        <div
-          className={`fixed top-16 left-0 w-full h-screen bg-white flex flex-col justify-center items-center z-40 transition-all duration-500 ${
-            isOpen
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-4 pointer-events-none"
+      {/* Hamburger (mobile) */}
+      <button
+        className="flex w-9 flex-col items-end gap-[9px] py-2 md:hidden"
+        aria-label="Open menu"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen(true)}
+      >
+        <span
+          className={`h-[2px] w-9 bg-black transition-all duration-300 motion-reduce:transition-none ${
+            menuOpen ? "translate-y-[10px] rotate-45" : ""
           }`}
-        >
-          <ul className="text-lg font-bold space-y-6 h-[250px] my-auto">
-            <li>
-              <Link to="/" onClick={() => setIsOpen(false)}>
-                WORK
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={() => setIsOpen(false)}>
-                ABOUT
-              </Link>
-            </li>
-          </ul>
+        />
+        <span
+          className={`h-[2px] w-6 bg-black transition-all duration-300 motion-reduce:transition-none ${
+            menuOpen ? "w-0 opacity-0" : ""
+          }`}
+        />
+        <span
+          className={`h-[2px] w-9 bg-black transition-all duration-300 motion-reduce:transition-none ${
+            menuOpen ? "-translate-y-[10px] -rotate-45" : ""
+          }`}
+        />
+      </button>
+
+      {/* Mobile fullscreen */}
+      <div
+        className={`fixed inset-0 z-50 flex flex-col bg-black text-white transition-[clip-path,visibility] duration-700 ease-in-out motion-reduce:transition-none md:hidden ${
+          menuOpen ? "visible" : "invisible"
+        }`}
+        style={{
+          clipPath: menuOpen
+            ? "circle(150% at calc(100% - 50px) 47px)"
+            : "circle(0px at calc(100% - 50px) 47px)",
+        }}
+        aria-hidden={!menuOpen}
+      >
+        <div className="flex h-[94px] shrink-0 items-center justify-between px-8">
+          <Logo />
+
+          {/* X: الخطين بيترسموا واحد ورا التانى */}
+          <button
+            className="relative h-9 w-9"
+            aria-label="Close menu"
+            onClick={closeMenu}
+          >
+            <span
+              className={`absolute left-1/2 top-1/2 h-[2px] w-7 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white transition-transform duration-300 motion-reduce:transition-none ${
+                menuOpen ? "scale-x-100 delay-500" : "scale-x-0"
+              }`}
+            />
+            <span
+              className={`absolute left-1/2 top-1/2 h-px w-7 -translate-x-1/2 -translate-y-1/2 -rotate-45 bg-white transition-transform duration-300 motion-reduce:transition-none ${
+                menuOpen ? "scale-x-100 delay-[600ms]" : "scale-x-0"
+              }`}
+            />
+          </button>
         </div>
+
+        <nav className="flex flex-1 flex-col justify-center overflow-y-auto px-8 font-['Montserrat'] text-[40px] leading-[1.35]">
+          <div {...item(0)}>
+            <button
+              className="flex items-center gap-4 text-left"
+              aria-expanded={mobileProjects}
+              onClick={() => setMobileProjects((v) => !v)}
+            >
+              PORTFOLIO
+              <FaChevronRight
+                size={18}
+                className={`transition-transform duration-300 ${
+                  mobileProjects ? "rotate-90" : ""
+                }`}
+              />
+            </button>
+
+            {/* فتح/قفل القايمة الفرعية بحركة ناعمة */}
+            <div
+              className={`grid transition-[grid-template-rows] duration-300 motion-reduce:transition-none ${
+                mobileProjects ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              }`}
+            >
+              <ul className="flex min-h-0 flex-col gap-1 overflow-hidden pl-1 text-[22px] text-white/70">
+                {PROJECTS.map((p) => (
+                  <li key={p}>
+                    <a href="#" onClick={closeMenu} className="block py-1">
+                      {p}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <a
+            href="#about"
+            onClick={closeMenu}
+            {...item(1)}
+            className={`self-start ${item(1).className}`}
+          >
+            About
+          </a>
+          <a
+            href="#contact"
+            onClick={closeMenu}
+            {...item(2)}
+            className={`self-start ${item(2).className}`}
+          >
+            Contact
+          </a>
+        </nav>
+
+        <ul className="flex shrink-0 items-center gap-5 px-8 pb-12 pt-6 text-[22px]">
+          {SOCIALS.map(({ label, href, Icon }, i) => (
+            <li key={label} {...item(3 + i)}>
+              <a href={href} aria-label={label} className="hover:opacity-60">
+                <Icon />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </nav>
+    </header>
   );
 };
 

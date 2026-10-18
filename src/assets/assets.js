@@ -1,17 +1,19 @@
-import eboo from "./Eboo.webp";
-import folk from "./folk.webp";
-import jump from "./jump.webp";
-import koogi from "./koogi.webp";
-import maged from "./maged.webp";
+import logo from "./logo.webp";
+import hero_video from "./demo_reel (720p).mp4";
+import maged from "./Majid_TV_logo_2023.svg.webp";
+import spacetoon from "./Spacetoon.webp";
 import samaka from "./samaka.webp";
-import spaceToon from "./Spacetoon.webp"
+import jump from "./jump.webp";
+import folk from "./folk.webp";
+import koogi from "./koogi.webp";
 
 export const assets = {
-  eboo,
-  folk,
-  jump,
-  koogi,
+  logo,
+  hero_video,
   maged,
+  spacetoon,
   samaka,
-  spaceToon,
+  jump,
+  folk,
+  koogi,
 };
