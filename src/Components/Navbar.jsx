@@ -9,6 +9,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { assets } from "../assets/assets";
+import { Link } from "react-router-dom";
 
 const SOCIALS = [
   { label: "Vimeo", href: "#", Icon: FaVimeoV },
@@ -100,12 +101,9 @@ const Navbar = () => {
               </ul>
             )}
           </div>
-          <a href="#about" className="hover:opacity-60">
+          <Link to="/about" className="hover:opacity-60">
             About
-          </a>
-          <a href="#contact" className="hover:opacity-60">
-            Contact
-          </a>
+          </Link>
         </nav>
       </div>
 
