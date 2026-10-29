@@ -32,7 +32,7 @@ const About = () => {
         {/* النص */}
         <div className="md:col-span-3">
           <h2 className="font-londrina text-5xl leading-none tracking-wide text-[#fa2119]">
-            Hello, I&rsquo;m Ahmed !
+            Hello, I&rsquo;m Ebram !
           </h2>
 
           <Squiggle
@@ -43,30 +43,26 @@ const About = () => {
 
           <div className="mt-10 space-y-4 text-[15px] leading-6 text-black sm:text-base">
             <p>
-              I&rsquo;m an{" "}
-              <strong>
-                Animation Director, Supervisor, and Visual Storyteller
-              </strong>{" "}
-              with over 10 years of experience, based in Cairo, Egypt.
+              I&rsquo;m an <strong>Animator and Rigger</strong> with over 10
+              years of experience in the animation industry. I enjoy bringing
+              characters to life through expressive movement and building rigs
+              that help animators create performances with flexibility and
+              control.
             </p>
 
             <p>
-              I hold a Bachelor&rsquo;s Degree in &ldquo;Animation
-              Directing&rdquo; from the <strong>High Cinema Institute</strong>.
-              While my focus is on leading creative teams and directing
-              campaigns, I am still a hands-on <strong>Animator</strong> and{" "}
-              <strong>Character Designer</strong> at heart. I love telling
-              stories through design, bringing short films to life, and sharing
-              what I&rsquo;ve learned with the community.
+              Over the years, I&rsquo;ve had the opportunity to work with
+              studios such as <strong>Jump</strong>, <strong>Folk</strong>,{" "}
+              <strong>Samaka</strong>, and <strong>Spacetoon</strong>. Each
+              project has helped me grow as an artist and collaborate with
+              creative teams to bring a range of ideas and characters to life.
             </p>
 
             <p>
-              My professional work includes projects for{" "}
-              <strong>Netflix</strong> (<em>Fever Dreams</em>),{" "}
-              <strong>Cartoon Network &amp; HBO</strong> (
-              <em>The Heroic Quest of the Valiant Prince Ivandoe</em>),{" "}
-              <strong>Majid TV</strong> (<em>Zakia Al Zakia</em>), and{" "}
-              <strong>MBC</strong> (<em>Hakawati Nation</em>).
+              My experience also includes projects for <strong>Koogi</strong>{" "}
+              and <strong>Majid TV</strong>. Whether I&rsquo;m animating a
+              character or developing a rig, I care about creating work that
+              feels clear, engaging, and full of personality.
             </p>
           </div>
 
