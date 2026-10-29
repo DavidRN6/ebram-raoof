@@ -210,22 +210,14 @@ const Navbar = () => {
             </div>
           </div>
 
-          <a
-            href="#about"
+          <Link
+            to="/about"
             onClick={closeMenu}
             {...item(1)}
             className={`self-start ${item(1).className}`}
           >
             About
-          </a>
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            {...item(2)}
-            className={`self-start ${item(2).className}`}
-          >
-            Contact
-          </a>
+          </Link>
         </nav>
 
         <ul className="flex shrink-0 items-center gap-5 px-8 pb-12 pt-6 text-[22px]">
